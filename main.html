@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PUPShop</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #fdf6e3;
+            color: #333;
+        }
+
+        /* HEADER */
+        header {
+            background: #ffb84d;
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        header .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        header .logo img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid #fff;
+        }
+
+        header .logo h1 {
+            font-size: 28px;
+            letter-spacing: 2px;
+            color: #333;
+        }
+
+        header nav {
+            display: flex;
+            gap: 25px;
+            font-weight: 500;
+        }
+
+        header nav a {
+            text-decoration: none;
+            color: #333;
+            position: relative;
+            padding: 5px 0;
+            transition: 0.3s;
+        }
+
+        header nav a:hover::after {
+            width: 100%;
+        }
+
+        header nav a::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 0%;
+            height: 2px;
+            background: #333;
+            transition: 0.3s;
+        }
+
+        /* MARQUEE */
+        .marquee {
+            overflow: hidden;
+            border-top: 2px solid #333;
+            border-bottom: 2px solid #333;
+            background: #fff7e6;
+            padding: 15px 0;
+        }
+
+        .marquee-track {
+            display: flex;
+            gap: 20px;
+            animation: marquee 20s linear infinite;
+        }
+
+        .marquee img {
+            width: 180px;
+            height: 120px;
+            object-fit: cover;
+            border-radius: 12px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .marquee img:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        @keyframes marquee {
+            from {
+                transform: translateX(100%);
+            }
+
+            to {
+                transform: translateX(-100%);
+            }
+        }
+
+        /* PRODUCTS GRID */
+        .products {
+            padding: 40px 30px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 30px;
+        }
+
+        .card {
+            background: #fff;
+            border-radius: 20px;
+            padding: 15px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+        }
+
+        .card img {
+            width: 100%;
+            height: 180px;
+            border-radius: 15px;
+            object-fit: cover;
+            margin-bottom: 10px;
+        }
+
+        .card h3 {
+            margin-bottom: 5px;
+            font-size: 20px;
+        }
+
+        .price {
+            font-weight: 700;
+            color: #e63946;
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+
+        select,
+        input[type="number"] {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+
+        select:hover,
+        input:hover {
+            border-color: #333;
+        }
+
+        button {
+            background: linear-gradient(45deg, #333, #555);
+            color: #fff;
+            border: none;
+            padding: 10px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: 0.3s;
+            width: 100%;
+        }
+
+        button:hover {
+            background: linear-gradient(45deg, #555, #333);
+            transform: scale(1.05);
+        }
+
+        /* CART INFO */
+        #cart-info {
+            position: fixed;
+            top: 80px;
+            right: 30px;
+            background: #ffb84d;
+            padding: 10px 15px;
+            border-radius: 12px;
+            font-weight: 600;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .marquee img {
+                width: 140px;
+                height: 90px;
+            }
+        }
+        a{
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <header>
+        <div class="logo">
+            <img src="logo.webp" alt="PUPShop Logo">
+            <a href="main.html"><h1>PUPShop</h1></a>
+        </div>
+        <nav>
+            <a href="home.html">Home</a>
+            <a href="products.html">Products</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+            <a href="cart.html">Cart 🛒</a>
+        </nav>
+    </header>
+
+    <!-- CART INFO -->
+    <div id="cart-info">Cart: 0 items | ₱0</div>
+
+    <!-- MARQUEE -->
+    <div class="marquee">
+        <div class="marquee-track">
+            <img src="shirt1.jpg" alt="">
+            <img src="shirt2.jpg" alt="">
+            <img src="shirt3.jpg" alt="">
+            <img src="LACE1.jpg" alt="">
+            <img src="LACE2.jpg" alt="">
+            <img src="jersey1.jpg" alt="">
+            <!-- Repeat for seamless loop -->
+            <img src="shirt1.jpg" alt="">
+            <img src="shirt2.jpg" alt="">
+            <img src="shirt3.jpg" alt="">
+            <img src="LACE1.jpg" alt="">
+            <img src="LACE2.jpg" alt="">
+            <img src="jersey1.jpg" alt="">
+        </div>
+    </div>
+
+    <!-- PRODUCTS -->
+    <section class="products">
+
+        <div class="card" data-price="350">
+            <img src="shirt1.jpg" alt="PUP T-Shirt 1">
+            <h3>PUP T-Shirt 1</h3>
+            <div class="price">₱350</div>
+            <select>
+                <option>Small</option>
+                <option>Medium</option>
+                <option>Large</option>
+                <option>XL</option>
+            </select>
+            <input type="number" min="1" value="1">
+            <button>Add to Cart</button>
+        </div>
+
+        <div class="card" data-price="380">
+            <img src="shirt2.jpg" alt="PUP T-Shirt 2">
+            <h3>PUP T-Shirt 2</h3>
+            <div class="price">₱380</div>
+            <select>
+                <option>Small</option>
+                <option>Medium</option>
+                <option>Large</option>
+                <option>XL</option>
+            </select>
+            <input type="number" min="1" value="1">
+            <button>Add to Cart</button>
+        </div>
+
+        <div class="card" data-price="420">
+            <img src="shirt3.jpg" alt="PUP T-Shirt 3">
+            <h3>PUP T-Shirt 3</h3>
+            <div class="price">₱420</div>
+            <select>
+                <option>Small</option>
+                <option>Medium</option>
+                <option>Large</option>
+                <option>XL</option>
+            </select>
+            <input type="number" min="1" value="1">
+            <button>Add to Cart</button>
+        </div>
+
+        <div class="card" data-price="120">
+            <img src="LACE1.jpg" alt="PUP Lace 1">
+            <h3>PUP Lace 1</h3>
+            <div class="price">₱120</div>
+            <input type="number" min="1" value="1">
+            <button>Add to Cart</button>
+        </div>
+
+        <div class="card" data-price="130">
+            <img src="LACE2.jpg" alt="PUP Lace 2">
+            <h3>PUP Lace 2</h3>
+            <div class="price">₱130</div>
+            <input type="number" min="1" value="1">
+            <button>Add to Cart</button>
+        </div>
+
+        <div class="card" data-price="650">
+            <img src="jersey1.jpg" alt="PUP Jersey">
+            <h3>PUP Jersey</h3>
+            <div class="price">₱650</div>
+            <select>
+                <option>Small</option>
+                <option>Medium</option>
+                <option>Large</option>
+                <option>XL</option>
+            </select>
+            <input type="number" min="1" value="1">
+            <button>Add to Cart</button>
+        </div>
+
+    </section>
+
+    <!-- SCRIPT -->
+    <script>
+        const cartInfo = document.getElementById("cart-info");
+        const buttons = document.querySelectorAll(".card button");
+
+        let cart = {
+            items: 0,
+            total: 0
+        };
+
+        buttons.forEach(btn => {
+            btn.addEventListener("click", () => {
+                const card = btn.parentElement;
+                const price = parseInt(card.dataset.price);
+                const quantity = parseInt(card.querySelector("input").value);
+
+                cart.items += quantity;
+                cart.total += price * quantity;
+
+                cartInfo.textContent = `Cart: ${cart.items} items | ₱${cart.total}`;
+                btn.textContent = "Added ✔";
+                setTimeout(() => btn.textContent = "Add to Cart", 1000);
+            });
+        });
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PUPShop - Home</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #fdf6e3;
+            color: #333;
+            scroll-behavior: smooth;
+        }
+
+        /* HEADER */
+        header {
+            background: #ffb84d;
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        header .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        header .logo img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid #fff;
+        }
+
+        header .logo h1 {
+            font-size: 28px;
+            letter-spacing: 2px;
+            color: #333;
+        }
+
+        header nav {
+            display: flex;
+            gap: 25px;
+            font-weight: 500;
+        }
+
+        header nav a {
+            text-decoration: none;
+            color: #333;
+            position: relative;
+            padding: 5px 0;
+            transition: 0.3s;
+        }
+
+        header nav a:hover::after {
+            width: 100%;
+        }
+
+        header nav a::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 0%;
+            height: 2px;
+            background: #333;
+            transition: 0.3s;
+        }
+
+        /* MARQUEE */
+        .marquee {
+            overflow: hidden;
+            border-top: 2px solid #333;
+            border-bottom: 2px solid #333;
+            background: #fff7e6;
+            padding: 15px 0;
+            margin-bottom: 40px;
+        }
+
+        .marquee-track {
+            display: flex;
+            gap: 20px;
+            animation: marquee 20s linear infinite;
+        }
+
+        .marquee img {
+            width: 180px;
+            height: 120px;
+            object-fit: cover;
+            border-radius: 25px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .marquee img:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        @keyframes marquee {
+            from {
+                transform: translateX(100%);
+            }
+
+            to {
+                transform: translateX(-100%);
+            }
+        }
+
+        /* HOME SECTION */
+        #home {
+            text-align: center;
+            padding: 80px 20px;
+        }
+
+        #home h2 {
+            font-size: 36px;
+            color: #e63946;
+            margin-bottom: 20px;
+        }
+
+        #home p {
+            font-size: 18px;
+            max-width: 700px;
+            margin: auto;
+            line-height: 1.6;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .marquee img {
+                width: 140px;
+                height: 90px;
+            }
+
+            #home h2 {
+                font-size: 28px;
+            }
+
+            #home p {
+                font-size: 16px;
+            }
+        }
+        a{
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <header>
+        <div class="logo">
+            <img src="logo.webp" alt="PUPShop Logo">
+            <a href="main.html"><h1>PUPShop</h1></a>
+        </div>
+        <nav>
+            <a href="home.html">Home</a>
+            <a href="products.html">Products</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+            <a href="cart.html">Cart 🛒</a>
+        </nav>
+    </header>
+
+    <!-- HOME SECTION -->
+    <section id="home">
+        <h2>Welcome to PUPShop</h2>
+        <p>
+            PUPShop is the official merchandise store for PUP students and alumni. Explore our collection of
+            high-quality T-shirts, jerseys, and accessories that let you showcase your school pride. Enjoy a
+            seamless shopping experience with fast and secure delivery.
+        </p>
+
+        <!-- MARQUEE -->
+        <div class="marquee">
+            <div class="marquee-track">
+                <img src="shirt1.jpg" alt="Product 1">
+                <img src="shirt2.jpg" alt="Product 2">
+                <img src="shirt3.jpg" alt="Product 3">
+                <img src="LACE1.jpg" alt="Product 4">
+                <img src="LACE2.jpg" alt="Product 5">
+                <img src="jersey1.jpg" alt="Product 6">
+                <!-- Repeat for smooth loop -->
+                <img src="shirt1.jpg" alt="Product 1">
+                <img src="shirt2.jpg" alt="Product 2">
+                <img src="shirt3.jpg" alt="Product 3">
+                <img src="LACE1.jpg" alt="Product 4">
+                <img src="LACE2.jpg" alt="Product 5">
+                <img src="jersey1.jpg" alt="Product 6">
+            </div>
+        </div>
+    </section>
+
+</body>
+
+</html>
